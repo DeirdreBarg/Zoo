@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * Zoo
@@ -9,6 +10,7 @@ public class Zoo {
     
     ArrayList<String> animalOptions = new ArrayList<>(Arrays.asList("Lion", "Monkey")); 
     ArrayList<Animal>residents = new ArrayList<>();
+    Scanner scanner = new Scanner(System.in);
 
 
 
@@ -23,18 +25,25 @@ public class Zoo {
      * @returns: The index of the arraylist indicating what animal they want to create
      */
     public static int promptUser() {
+        System.out.println("Welcome to your new Zoo! What would you like to do?");
+        
         return 1;
     }
 
     // Creates instance of the animal they want to create
     public void createAnimal(int choice) {
         String animal = animalOptions.get(choice - 1);
+        String newName = getAnimalName();
         if (animal == "Lion") {
-            Lion l = new Lion("Lenny");
+            Lion l = new Lion(newName);
             residents.add(l);
-            Lion l2 = new Lion("Larry");
-            residents.add(l2);
         }
+    }
+
+    public String getAnimalName() {
+        System.out.println("What would you like to name your aniaml?\n");
+        String animalName = scanner.nextLine();
+        return animalName;
     }
 
     public void displayResidences() {
